@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\User;
 use App\Models\user_borrows;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,15 @@ class UserBorrowsController extends Controller
      */
     public function index()
     {
-        //
+        return  view ('borrowlist', [
+            "users" => User::all(),
+            "title" => "borrowlist",
+            "collections" => Book::all(),
+            // ini buat sort terbaru
+            // "posts" => Post::latest()->get()
+
+            // return view('borrowlist')
+        ]);
     }
 
     /**
@@ -36,6 +46,15 @@ class UserBorrowsController extends Controller
     public function store(Request $request)
     {
         //
+        $user = User::find($request->id);
+        $book = Book::find($request->id);
+
+        $userborrow = user_borrows::create([
+            'user_id' => $user->id,
+            'book_id' => $book->id,
+            'title' => $request->title,
+        ]);
+        return redirect()->route('userborrow.index');
     }
 
     /**

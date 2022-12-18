@@ -25,6 +25,9 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function borrowing(){
+        return $this->belongsToMany(Book::class, 'user_book', 'user_id', 'book_id');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
