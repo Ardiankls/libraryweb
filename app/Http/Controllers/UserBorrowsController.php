@@ -100,7 +100,7 @@ class UserBorrowsController extends Controller
         // $book = Book::find($user_borrows->book_id);
         $userborrow = user_borrows::find($id);
         $bookid = Book::find($userborrow->book_id);
-        // dd($bookid);
+        // dd($userborrow);
         $bookid->update([
             'status' => '1'
         ]);
@@ -120,9 +120,9 @@ class UserBorrowsController extends Controller
     public function destroy($id)
     {
         //
-        $userborrow = user_borrows::find($id);
-        dd($userborrow);
-        // $userborrow->delete();
+        $userborrowid = user_borrows::find($id);
+        // dd($userborrow);
+        $userborrowid->delete();
         // $bookid = Book::find($userborrow->book_id);
         // $bookid->update([
         //     'status' => '1'

@@ -44,8 +44,9 @@
                             <input name="_method" type="hidden" value="PATCH">
                             <button class="btn btn-primary" type="submit" onclick="this.disabled=true; this.form.submit();">returned</button>
                         </form>
-                        <form class="mt-3" action="{{ route('userborrow.destroy', $ub) }}" method="post">
+                        <form action="{{ route('userborrow.destroy', $ub) }}" method="post">
                             @csrf
+                            @method('delete')
                             <input name="_method" type="hidden" value="PATCH">
                             <button class="btn btn-danger" type="submit" onclick="this.disabled=true; this.form.submit();">delete</button>
                         </form>

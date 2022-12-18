@@ -11,7 +11,7 @@
                     <a class="nav-link {{ ($title === "Book Collection") ? 'active' : '' }}" href="/">Collection</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Borrow List") ? 'active' : '' }}" href="/borrowlist">Borrow List</a>
+                    <a class="nav-link {{ ($title === "Borrow List") ? 'active' : '' }}" href="{{ route('userborrow.index') }}">Borrow List</a>
                 </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link {{ ($title === "Posts") ? 'active' : '' }}" href="/posts">Posts</a>
