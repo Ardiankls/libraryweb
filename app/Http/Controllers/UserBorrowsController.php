@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\User;
 use App\Models\user_borrows;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserBorrowsController extends Controller
@@ -19,7 +20,8 @@ class UserBorrowsController extends Controller
         return  view ('borrowlist', [
             "users" => User::all(),
             "title" => "borrowlist",
-            "collections" => Book::all(),
+            "collections" => Book::where('status', '=', '1')->get(),
+            "userborrows" => user_borrows::all(),
             // ini buat sort terbaru
             // "posts" => Post::latest()->get()
 
@@ -46,14 +48,20 @@ class UserBorrowsController extends Controller
     public function store(Request $request)
     {
         //
-        $user = User::find($request->id);
-        $book = Book::find($request->id);
-
+        $user = User::find($request->userid);
+        $book = Book::find($request->bookid);
         $userborrow = user_borrows::create([
             'user_id' => $user->id,
             'book_id' => $book->id,
             'title' => $request->title,
+            'borrowed_at' => Carbon::now(),
+            'borrowed_end' => Carbon::now()->addDays(7)
         ]);
+
+        $book->update([
+            'status' => '0'
+        ]);
+
         return redirect()->route('userborrow.index');
     }
 
@@ -86,9 +94,21 @@ class UserBorrowsController extends Controller
      * @param  \App\Models\user_borrows  $user_borrows
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user_borrows $user_borrows)
+    public function update(Request $request, $id,)
     {
         //
+        // $book = Book::find($user_borrows->book_id);
+        $userborrow = user_borrows::find($id);
+        $bookid = Book::find($userborrow->book_id);
+        // dd($bookid);
+        $bookid->update([
+            'status' => '1'
+        ]);
+        
+
+        return redirect()->route('userborrow.index');
+    
+       
     }
 
     /**
@@ -97,8 +117,20 @@ class UserBorrowsController extends Controller
      * @param  \App\Models\user_borrows  $user_borrows
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user_borrows $user_borrows)
+    public function destroy($id)
     {
         //
+        $userborrow = user_borrows::find($id);
+        dd($userborrow);
+        // $userborrow->delete();
+        // $bookid = Book::find($userborrow->book_id);
+        // $bookid->update([
+        //     'status' => '1'
+        // ]);
+        
+        return redirect()->route('userborrow.index');
+        
     }
+
+    
 }

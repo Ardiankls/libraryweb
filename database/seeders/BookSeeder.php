@@ -24,22 +24,22 @@ class BookSeeder extends Seeder
         $book->save();
 
         $book = new Book();
-        $book->slug = ('');
-        $book->title=('The-Design-of-Everyday-Things');
+        $book->slug = ('The-Design-of-Everyday-Things');
+        $book->title=('The Design of Everyday Things');
         $book->about=('The Design of Everyday Things is a best-selling book by cognitive scientist and usability engineer Donald Norman about how design serves as the communication between object and user, and how to optimize that conduit of communication in order to make the experience of using the object pleasurable.');
         $book->author=('Don Norman');
         $book->save();
 
         $book = new Book();
-        $book->slug = ('');
-        $book->title=('How-to-win-friends-and-influence-people.-How-to-stop-worrying-and-start-living');
+        $book->slug = ('How-to-win-friends-and-influence-people.-How-to-stop-worrying-and-start-living');
+        $book->title=('How to win friends and influence people. How to stop worrying and start living');
         $book->about=('How to Win Friends and Influence People is a 1936 self-help book written by Dale Carnegie. Over 30 million copies have been sold worldwide, making it one of the best-selling books of all time. Carnegie had been conducting business education courses in New York since 1912.');
         $book->author=('Dale Carnegie');
         $book->save();
 
         $book = new Book();
-        $book->slug = ('');
-        $book->title=('The-Psychology-of-Money:-Timeless-Lessons-on-Wealth,-Greed,-and-Happiness');
+        $book->slug = ('The-Psychology-of-Money:-Timeless-Lessons-on-Wealth,-Greed,-and-Happiness');
+        $book->title=('The Psychology of Money: Timeless Lessons on Wealth, Greed, and Happiness');
         $book->about=('Doing well with money isn’t necessarily about what you know. It’s about how you behave. And behavior is hard to teach, even to really smart people.Money—investing, personal finance, and business decisions—is typically taught as a math-based field, where data and formulas tell us exactly what to do.');
         $book->author=('Morgan Housel');
         $book->save();

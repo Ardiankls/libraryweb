@@ -28,12 +28,12 @@ Route::get('/', [BookController::class, 'index']);
 Route::get('/collection/', [BookController::class, 'index']);
 
 
-Route::get('/borrowlist', function () {
-    return view('borrowlist', [
-        'title' => 'Borrow List',
-        'collections' => Book::all(),
-        'users' => User::all()
-    ]);
-});
+// Route::get('/borrowlist', function () {
+//     return view('borrowlist', [
+//         'title' => 'Borrow List',
+//         'collections' => Book::all(),
+//         'users' => User::all()
+//     ]);
+// });
 Route::resource('userborrow', UserBorrowsController::class);
 Route::get('/collection/{book:slug}', [BookController::class, 'show']);

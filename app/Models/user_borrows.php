@@ -10,7 +10,9 @@ class user_borrows extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
-        'book_id'
+        'book_id',
+        'borrowed_at',
+        'borrowed_end'
     ];
 
     public function borrows(){

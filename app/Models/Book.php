@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
+
+    protected $fillable =['status'];
     
     // protected $guard = ['book_id'];
-    public function books(){
+    public function users(){
         return $this->belongsToMany(User::class, 'user_borrows', 'book_id', 'user_id');
     }
     // protected

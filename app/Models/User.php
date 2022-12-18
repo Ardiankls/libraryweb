@@ -25,7 +25,7 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function borrowing(){
+    public function books(){
         return $this->belongsToMany(Book::class, 'user_book', 'user_id', 'book_id');
     }
     /**

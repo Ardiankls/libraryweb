@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('book_id')->constrained();
             // $table->boolean('status');
             $table->date('borrowed_at')->nullable();
-            $table->date('borrow_end')->nullable();
+            $table->date('borrowed_end')->nullable();
             $table->timestamps();
         });
     }
