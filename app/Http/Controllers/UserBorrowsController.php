@@ -21,7 +21,7 @@ class UserBorrowsController extends Controller
             "users" => User::all(),
             "title" => "borrowlist",
             "collections" => Book::where('status', '=', '1')->get(),
-            "userborrows" => user_borrows::all(),
+            "userborrows" => user_borrows::latest()->get(),
             // ini buat sort terbaru
             // "posts" => Post::latest()->get()
 
@@ -120,9 +120,15 @@ class UserBorrowsController extends Controller
     public function destroy($id)
     {
         //
-        $userborrowid = user_borrows::find($id);
+        $userborrow = user_borrows::find($id);
+        $bookid = Book::find($userborrow->book_id);
         // dd($userborrow);
-        $userborrowid->delete();
+        $bookid->update([
+            'status' => '1'
+        ]);
+        // dd($userborrowid);
+
+        $userborrow->delete();
         // $bookid = Book::find($userborrow->book_id);
         // $bookid->update([
         //     'status' => '1'

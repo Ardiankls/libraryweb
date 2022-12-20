@@ -47,7 +47,7 @@
                         <form action="{{ route('userborrow.destroy', $ub) }}" method="post">
                             @csrf
                             @method('delete')
-                            <input name="_method" type="hidden" value="PATCH">
+                            {{-- <input name="_method" type="hidden" value="PATCH"> --}}
                             <button class="btn btn-danger" type="submit" onclick="this.disabled=true; this.form.submit();">delete</button>
                         </form>
                     </td>
